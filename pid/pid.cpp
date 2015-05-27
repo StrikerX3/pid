@@ -52,22 +52,20 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::string procName = ws2s(procNameU);
 		if (argc == 1)
 		{
-			std::cout << pk_Proc->UniqueProcessId << ": " << procName << std::endl;
+			std::cout << (LONG) pk_Proc->UniqueProcessId << ": " << procName << std::endl;
 		}
 		else
 		{
 			for (int i = 1; i < argc; i++)
 			{
-				// probably horribly inefficient, but I doubt anyone would run over 1000 processes...
 				std::wstring nameToFindU(argv[i]);
 				std::string nameToFind = ws2s(nameToFindU);
-				std::string procPid = std::to_string((ULONG) pk_Proc->UniqueProcessId);
 				int fName = ci_find_substr(procName, nameToFind);
-				int fPid = ci_find_substr(procPid, nameToFind);
+				LONG fPid = atol(nameToFind.c_str());
 				//std::cout << nameToFind << " -- " << procName << " = " << f << std::endl;
-				if (fName >= 0 || fPid >= 0)
+				if (fName >= 0 || fPid == (LONG) pk_Proc->UniqueProcessId)
 				{
-					std::cout << (LONG)pk_Proc->UniqueProcessId << ": " << procName << std::endl;
+					std::cout << (LONG) pk_Proc->UniqueProcessId << ": " << procName << std::endl;
 				}
 			}
 		}
