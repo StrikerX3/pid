@@ -62,8 +62,9 @@ int _tmain(int argc, _TCHAR* argv[])
 				std::string nameToFind = ws2s(nameToFindU);
 				int fName = ci_find_substr(procName, nameToFind);
 				LONG fPid = atol(nameToFind.c_str());
+				bool searchForPID = fPid != 0 || nameToFind == "0";
 				//std::cout << nameToFind << " -- " << procName << " = " << f << std::endl;
-				if (fName >= 0 || fPid == (LONG) pk_Proc->UniqueProcessId)
+				if (fName >= 0 || (searchForPID && fPid == (LONG) pk_Proc->UniqueProcessId))
 				{
 					std::cout << (LONG) pk_Proc->UniqueProcessId << ": " << procName << std::endl;
 				}

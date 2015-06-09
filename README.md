@@ -5,7 +5,7 @@ Build with [Visual Studio 2013 Community](https://www.visualstudio.com/en-us/pro
 
 # Usage
   - `pid` - List all processes and respective process IDs.
-  - `pid <image-name>` - List all processes whose image name matches or contains <image-name>. Case-insensitive.
+  - `pid <image-name>` - List all processes whose image name matches or contains `<image-name>`. Case-insensitive.
   - `pid <process-id>` - Displays the process with the given ID, if found.
 
 Released under the [MIT License](http://opensource.org/licenses/MIT).
